@@ -1,0 +1,40 @@
+### Expo
+
+(sudo) npm install expo --global
+
+### CREATE APP
+
+expo init my-project
+cd my-project
+
+### INSTALL DEPENDENCIES
+
+yarn add @react-navigation/native @react-navigation/native-stack @react-navigation/bottom-tabs @react-navigation/drawer react-navigation-header-buttons redux react-redux redux-thunk @react-navigation/material-bottom-tabs react-native-paper
+expo install expo-font expo-app-loading react-native-screens react-native-safe-area-context react-native-reanimated react-native-gesture-handler expo-linear-gradient @react-native-async-storage/async-storage
+
+### CREATE ALIASES IN babel.config.js
+
+module.exports = function(api) {
+  ...
+  return {
+    ...
+    plugins: [
+      [
+        'module-resolver',
+        {
+          alias: {
+            '@assets': './assets',
+            '@components': './components',
+            '@constants': './constants',
+            '@screens': './screens',
+            '@store': './store',
+          },
+        },
+      ],
+    ],
+  };
+};
+
+### START PROJECT
+
+yarn start
