@@ -58,7 +58,6 @@ const Card = ({
         <TouchableComponent
           {...feedBackProps}
           onPress={onPress}
-          style={styles.touchable}
         >
           {children}
         </TouchableComponent>
@@ -69,7 +68,6 @@ const Card = ({
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
     borderRadius: 10,
     backgroundColor: Colors.white,
   },
@@ -85,12 +83,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
   },
   touchableContainer: {
-    flex: 1,
     borderRadius: 10,
     overflow: 'hidden',
-  },
-  touchable: {
-    flex: 1,
   },
 });
 
