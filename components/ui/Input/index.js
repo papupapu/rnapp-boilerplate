@@ -213,7 +213,6 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   container: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     height: 41,
