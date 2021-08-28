@@ -8,4 +8,6 @@ export default {
   background: '#f1f1f1',
   border: '#d8dbdf',
   white: '#ffffff',
-}
+  black: '#000000',
+  cardtitlebg: 'rgba(0, 0, 0, 0.4)',
+};
