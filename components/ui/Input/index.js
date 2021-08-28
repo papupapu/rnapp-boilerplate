@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, {
   useState,
   useReducer,
@@ -13,12 +14,12 @@ import {
 
 import { Ionicons } from '@expo/vector-icons';
 
-import Text from '../Text';
-import Button from '../Button';
-
 import Colors from '@constants/colors';
 import Spacings from '@constants/spacings';
 import Typography from '@constants/typography';
+
+import Text from '../Text';
+import Button from '../Button';
 
 const INPUT_FOCUS = 'INPUT_FOCUS';
 const INPUT_BLUR = 'INPUT_BLUR';
@@ -27,16 +28,16 @@ const RESET_INPUT = 'RESET_INPUT';
 
 const inputReducer = (state, action) => {
   switch (action.type) {
-    case INPUT_FOCUS: 
+    case INPUT_FOCUS:
       return {
         ...state,
         focused: true,
-      };        
-    case INPUT_BLUR: 
+      };
+    case INPUT_BLUR:
       return {
         ...state,
         focused: false,
-      };    
+      };
     case UPDATE_INPUT:
       return {
         ...state,
@@ -48,10 +49,10 @@ const inputReducer = (state, action) => {
         value: action.value,
         changed: action.changed,
         focused: action.focused,
-      };      
+      };
     default:
       return state;
-  };
+  }
 };
 
 const addRequiredLabel = (txt, isRequired) => `${txt}${isRequired ? '*' : ''}`;
@@ -71,7 +72,7 @@ const Input = forwardRef((props, ref) => {
   } = props;
 
   const [secureTextEntry, setSecureTextEntry] = useState(password);
-  const togglePwdVisibility = () => setSecureTextEntry(prevstate => !prevstate);
+  const togglePwdVisibility = () => setSecureTextEntry((prevstate) => !prevstate);
 
   const [inputState, dispatch] = useReducer(
     inputReducer,
@@ -82,7 +83,7 @@ const Input = forwardRef((props, ref) => {
     }
   );
 
-  const onChangeText = value => dispatch({
+  const onChangeText = (value) => dispatch({
     type: UPDATE_INPUT,
     value,
   });
@@ -119,11 +120,11 @@ const Input = forwardRef((props, ref) => {
   );
 
   const label = props.label
-    ? addRequiredLabel(props.label, required) 
+    ? addRequiredLabel(props.label, required)
     : null;
 
   const placeholder = props.placeholder
-    ? addRequiredLabel(props.placeholder, required) 
+    ? addRequiredLabel(props.placeholder, required)
     : null;
 
   let icon = null;
@@ -160,14 +161,15 @@ const Input = forwardRef((props, ref) => {
 
   const error = typeof isValid === 'boolean' && !isValid && !inputState.focused;
 
+  const containerStyle = {
+    ...styles.container,
+    ...(error && styles.error),
+  };
+
   return (
     <View style={styles.wrap}>
       {label && <Text fontSize={Typography.s} color={Colors.font2}>{label}</Text>}
-      <View style={{
-          ...styles.container,
-          ...(error && styles.error),
-        }}
-      >
+      <View style={containerStyle}>
         {
           leftIcon
             && (
@@ -186,7 +188,7 @@ const Input = forwardRef((props, ref) => {
           onChangeText={onChangeText}
           secureTextEntry={secureTextEntry}
           keyboardType={keyboardType}
-          placeholder={placeholder}          
+          placeholder={placeholder}
         />
         {icon}
       </View>
@@ -221,7 +223,7 @@ const styles = StyleSheet.create({
   },
   error: {
     borderBottomColor: Colors.secondary,
-  },    
+  },
   input: {
     flex: 1,
     height: 40,
@@ -229,7 +231,7 @@ const styles = StyleSheet.create({
   },
   leftIcon: {
     width: 22,
-  },  
+  },
   iconbtn: {
     width: 40,
     backgroundColor: Colors.white,

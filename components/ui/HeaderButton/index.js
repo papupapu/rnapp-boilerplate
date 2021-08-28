@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Platform } from 'react-native';
 
@@ -7,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '@constants/colors';
 
-const MyHeaderButton = props => {
+const MyHeaderButton = (props) => {
   const color = Platform.OS === 'android'
     ? Colors.white
     : Colors.primary;

@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-unused-styles */
 import React from 'react';
 
 import {
@@ -17,6 +18,7 @@ const Text = ({
   light,
   bold,
   children,
+  align,
 }) => {
   let weight = 'regular';
   if (light) {
@@ -26,7 +28,7 @@ const Text = ({
     weight = 'bold';
   }
 
-  const txtsize = fontSize 
+  const txtsize = fontSize
     ? { fontSize }
     : { fontSize: Typography.m };
 
@@ -45,6 +47,7 @@ const Text = ({
         ...txtsize,
         lineHeight,
         ...txtcolor,
+        ...(align ? { textAlign: align } : {}),
         ...style,
       }}
       numberOfRows={numberOfRows}

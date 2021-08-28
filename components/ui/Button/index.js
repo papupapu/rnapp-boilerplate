@@ -61,35 +61,37 @@ const Button = ({
     ...styles.touchable,
     ...styles.touchable__bg,
     ...cancelStyle,
-    ...style,                
+    ...style,
   };
+
+  const onPress = () => !disabled && action();
 
   return (
     <View style={{ ...styles.button, ...disabledStyle }}>
       <View style={styles.touchable__ctn}>
-      <TouchableComponent
-        {...feedBackProps}
-        style={styles.touchable}
-        onPress={() => { !disabled && action() }}
-      >
-        <View style={touchableContentStyle}>
-        {
-          text
-            ? (              
-              <Text
-                bold={textIsBold}
-                style={{
-                  ...styles.text,
-                  ...cancelTextStyle,
-                  ...textStyle,
-                }}
-              >
-                {text}
-              </Text>
-            ) : children
-        }
-        </View>
-      </TouchableComponent>
+        <TouchableComponent
+          {...feedBackProps}
+          style={styles.touchable}
+          onPress={onPress}
+        >
+          <View style={touchableContentStyle}>
+            {
+              text
+                ? (
+                  <Text
+                    bold={textIsBold}
+                    style={{
+                      ...styles.text,
+                      ...cancelTextStyle,
+                      ...textStyle,
+                    }}
+                  >
+                    {text}
+                  </Text>
+                ) : children
+            }
+          </View>
+        </TouchableComponent>
       </View>
     </View>
   );
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderWidth: 1,
     borderColor: Colors.font2,
-  },  
+  },
   touchable: {
     flex: 1,
     justifyContent: 'center',
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
   },
   touchable__bg: {
     backgroundColor: Colors.primary,
-  },  
+  },
   text: {
     color: Colors.white,
   },

@@ -15,7 +15,7 @@ const Card = ({
   justBorder,
   borderRadius,
   backgroundColor,
-  style,  
+  style,
   children,
 }) => {
   if (!children) {
@@ -30,11 +30,11 @@ const Card = ({
   let TouchableComponent = nativeFeedBack
     ? TouchableNativeFeedback
     : TouchableOpacity;
-  
+
   if (!onPress) {
     TouchableComponent = View;
   }
-  
+
   const feedBackProps = nativeFeedBack
     ? {
       background: TouchableNativeFeedback.Ripple(Colors.white, true),
@@ -43,25 +43,29 @@ const Card = ({
       activeOpacity: 0.5,
     };
 
+  const cardStyle = {
+    ...styles.card,
+    ...(justBorder ? styles.border : styles.shadow),
+    ...style,
+    ...(borderRadius && !Number.isNaN(borderRadius) && { borderRadius }),
+    ...(backgroundColor && { backgroundColor })
+  };
+
+  const touchableStyle = {
+    ...styles.touchableContainer,
+    ...(borderRadius && !Number.isNaN(borderRadius) && { borderRadius }),
+  };
+
   return (
-    <View style={{
-      ...styles.card,
-      ...(justBorder ? styles.border : styles.shadow),
-      ...style,
-      ...(!isNaN(borderRadius) && { borderRadius: borderRadius }),
-      ...(backgroundColor && { backgroundColor: backgroundColor })
-    }}>
-      <View style={{
-        ...styles.touchableContainer,
-        ...(!isNaN(borderRadius) && { borderRadius: borderRadius }),
-      }}>
+    <View style={cardStyle}>
+      <View style={touchableStyle}>
         <TouchableComponent
           {...feedBackProps}
           onPress={onPress}
         >
           {children}
         </TouchableComponent>
-      </View>      
+      </View>
     </View>
   );
 };
@@ -72,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   shadow: {
-    shadowColor: 'black',
+    shadowColor: Colors.black,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.26,
     shadowRadius: 5,
