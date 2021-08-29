@@ -47,13 +47,13 @@ const Card = ({
     ...styles.card,
     ...(justBorder ? styles.border : styles.shadow),
     ...style,
-    ...(borderRadius && !Number.isNaN(borderRadius) && { borderRadius }),
+    ...(typeof borderRadius !== 'undefined' && !Number.isNaN(borderRadius) && { borderRadius }),
     ...(backgroundColor && { backgroundColor })
   };
 
   const touchableStyle = {
     ...styles.touchableContainer,
-    ...(borderRadius && !Number.isNaN(borderRadius) && { borderRadius }),
+    ...(typeof borderRadius !== 'undefined' && !Number.isNaN(borderRadius) && { borderRadius }),
   };
 
   return (

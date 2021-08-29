@@ -121,9 +121,7 @@ const Form = ({
           )
         )
       }
-      <Buttons
-        buttons={buttonsProps}
-      />
+      <Buttons buttons={buttonsProps} />
     </View>
   );
 };

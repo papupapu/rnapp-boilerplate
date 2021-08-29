@@ -8,6 +8,7 @@ import Button from '../Button';
 
 const Buttons = ({ buttons }) => {
   const {
+    style,
     direction,
     items,
   } = buttons;
@@ -17,6 +18,7 @@ const Buttons = ({ buttons }) => {
       flexDirection: direction || null,
       justifyContent: direction === 'row' ? 'space-between' : null,
       alignItems: !direction || direction === 'column' ? 'space-between' : null,
+      style,
     };
     const btnContainerStyle = (index) => ({
       flex: direction === 'row' ? 1 : null,
@@ -53,11 +55,13 @@ const Buttons = ({ buttons }) => {
 
   const [btn] = items;
   return (
-    <Button
-      text={btn.text}
-      action={btn.action}
-      style={btn.style}
-    />
+    <View style={style}>
+      <Button
+        text={btn.text}
+        action={btn.action}
+        style={btn.style}
+      />
+    </View>
   );
 };
 

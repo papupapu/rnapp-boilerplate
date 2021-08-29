@@ -34,7 +34,7 @@ const Text = ({
 
   const txtcolor = color
     ? { color }
-    : { color: Colors.f1 };
+    : { color: Colors.font1 };
 
   const lineHeight = txtsize.fontSize < 18
     ? txtsize.fontSize + 8
